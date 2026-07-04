@@ -165,7 +165,7 @@ export default function ParallaxHero() {
           transition={{ duration: 1.8, ease: "easeOut", delay: 0.5 }}
           className="w-full md:w-[45%] flex justify-center md:justify-end items-center md:items-end z-20 pointer-events-none"
         >
-          <div className="relative w-[50vw] sm:w-[42vw] md:w-[32vw] lg:w-[25vw] aspect-[3/4] bg-brand-sand rounded-t-full border-[3px] md:border-[10px] border-white shadow-2xl overflow-hidden flex items-center justify-center">
+          <div className="relative w-[50vw] sm:w-[42vw] md:w-[32vw] lg:w-[25vw] aspect-[3/4] bg-brand-sand rounded-xs border-[3px] md:border-[10px] border-sand shadow-2xl overflow-hidden flex items-center justify-center">
             <img 
               src={WeddingCouplePortrait} 
               alt="Wedding Couple Portrait" 

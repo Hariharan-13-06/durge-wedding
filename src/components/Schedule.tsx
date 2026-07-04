@@ -104,20 +104,11 @@ export default function Schedule() {
           <div className="flex justify-center mb-3 text-brand-accent">
             <Gift className="w-6 h-6 animate-bounce" />
           </div>
-          <h4 className="font-serif font-semibold text-brand-text mb-1 tracking-wide">Elder Blessings (Ashirvadam)</h4>
+          <h4 className="font-serif font-semibold text-brand-text mb-1 tracking-wide">Blessings (Ashirvadam)</h4>
           <p className="text-brand-accent/80 text-xs md:text-sm font-serif italic max-w-lg mx-auto leading-relaxed">
-            "Your presence, love, and sacred blessings (Ashirvadam) are the greatest gifts we could ever receive. We kindly request no boxed gifts please; only your warm prayers and smiles are requested."
+            "Your presence, love, and blessings (Ashirvadam) are the greatest gifts we could ever receive. We kindly request no boxed gifts please; only your warm prayers and smiles are requested."
           </p>
           <div className="mt-4 flex justify-center gap-3">
-            <button 
-              onClick={() => {
-                const el = document.getElementById('interactive-zone');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-5 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accent/90 text-white text-xs font-semibold tracking-widest uppercase transition-colors cursor-pointer"
-            >
-              Shower Virtual Blessings
-            </button>
             <button 
               onClick={() => {
                 const el = document.getElementById('rsvp-section');
@@ -125,7 +116,7 @@ export default function Schedule() {
               }}
               className="px-5 py-2.5 rounded-full bg-white hover:bg-brand-sand/20 border border-brand-sand/40 text-brand-text text-xs font-semibold tracking-widest uppercase transition-colors cursor-pointer"
             >
-              RSVP to Attend
+              Shower Your Blessings
             </button>
           </div>
         </motion.div>

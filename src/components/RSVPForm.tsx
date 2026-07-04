@@ -56,7 +56,7 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
       <TempleWatermark />
 
       {/* Subtle border accent */}
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-brand-accent/20 to-transparent" />
+      {/* <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-brand-accent/20 to-transparent" /> */}
 
       <div className="max-w-3xl mx-auto relative z-10">
         
@@ -73,11 +73,11 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
               <Mail className="w-5 h-5" />
             </div>
             <h2 className="text-3xl md:text-4xl font-serif text-brand-text mb-3 font-normal tracking-wide">
-              Kindly RSVP
+              Shower Your Blessings
             </h2>
             <div className="w-12 h-[1px] bg-brand-accent/40 my-2" />
             <p className="text-sm md:text-base text-brand-accent max-w-lg font-serif italic">
-              Please respond by August 10, 2026. We can't wait to share our celebration with you.
+              A wish, a memory or just a heart.
             </p>
           </motion.div>
         </div>
@@ -93,31 +93,6 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                 onSubmit={handleSubmit}
                 className="bg-white/60 backdrop-blur-sm border border-brand-sand/30 rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgba(139,126,102,0.15)] space-y-6"
               >
-                {/* Attending Selection */}
-                <div className="flex gap-4 p-1 bg-brand-sand/20 rounded-2xl">
-                  <button
-                    type="button"
-                    onClick={() => setFormData({ ...formData, attending: 'yes' })}
-                    className={`flex-1 py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
-                      formData.attending === 'yes'
-                        ? 'bg-brand-text text-brand-bg shadow-md'
-                        : 'text-brand-text/60 hover:text-brand-text'
-                    }`}
-                  >
-                    Joyfully Attend
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setFormData({ ...formData, attending: 'no' })}
-                    className={`flex-1 py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
-                      formData.attending === 'no'
-                        ? 'bg-brand-accent text-brand-bg shadow-md'
-                        : 'text-brand-text/60 hover:text-brand-text'
-                    }`}
-                  >
-                    Regretfully Decline
-                  </button>
-                </div>
 
                 {/* Name Input */}
                 <div className="space-y-1.5 text-left">
@@ -155,59 +130,6 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                   {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
                 </div>
 
-                {/* Guests Count (Only visible if attending) */}
-                {formData.attending === 'yes' && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="space-y-1.5 text-left overflow-hidden"
-                  >
-                    <label htmlFor="guests-select" className="text-xs font-bold uppercase tracking-widest text-brand-text block">
-                      Number of Guests (including you)
-                    </label>
-                    <div className="relative">
-                      <select
-                        id="guests-select"
-                        value={formData.guestsCount}
-                        onChange={(e) => setFormData({ ...formData, guestsCount: Number(e.target.value) })}
-                        className="w-full px-4 py-3 rounded-xl border border-brand-sand/50 bg-white/85 text-brand-text text-sm focus:bg-white focus:border-brand-accent focus:outline-none appearance-none cursor-pointer transition-all duration-300"
-                      >
-                        {[1, 2, 3, 4, 5].map((num) => (
-                          <option key={num} value={num}>
-                            {num} {num === 1 ? 'Person' : 'People'}
-                          </option>
-                        ))}
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-accent">
-                        <Users className="w-4 h-4" />
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Dietary restrictions (Only visible if attending) */}
-                {formData.attending === 'yes' && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="space-y-1.5 text-left overflow-hidden"
-                  >
-                    <label htmlFor="dietary-input" className="text-xs font-bold uppercase tracking-widest text-brand-text block">
-                      Dietary Restrictions
-                    </label>
-                    <input
-                      id="dietary-input"
-                      type="text"
-                      value={formData.dietaryRestrictions}
-                      onChange={(e) => setFormData({ ...formData, dietaryRestrictions: e.target.value })}
-                      placeholder="e.g. Vegetarian, Gluten-free, none"
-                      className="w-full px-4 py-3 rounded-xl border border-brand-sand/50 bg-white/85 text-brand-text text-sm focus:bg-white focus:border-brand-accent focus:outline-none transition-all duration-300"
-                    />
-                  </motion.div>
-                )}
-
                 {/* Blessings message */}
                 <div className="space-y-1.5 text-left">
                   <label htmlFor="message-input" className="text-xs font-bold uppercase tracking-widest text-brand-text block">
@@ -229,7 +151,7 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                   className="w-full py-4 rounded-xl bg-brand-text hover:bg-brand-text/95 text-brand-bg font-semibold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-brand-text/10"
                 >
                   <Send className="w-4 h-4" />
-                  Submit RSVP
+                  Send Blessings
                 </button>
               </motion.form>
             ) : (
@@ -268,7 +190,7 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                     }}
                     className="px-6 py-2.5 rounded-full border border-brand-sand/40 hover:border-brand-accent/30 text-brand-text/80 hover:text-brand-text text-xs font-semibold tracking-widest uppercase transition-all cursor-pointer"
                   >
-                    Submit Another RSVP
+                    Send Another Blessing
                   </button>
                 </div>
               </motion.div>

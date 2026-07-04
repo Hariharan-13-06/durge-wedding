@@ -14,9 +14,9 @@ export const STORY_TIMELINE: TimelineEvent[] = [];
 export const WEDDING_SCHEDULE: ScheduleEvent[] = [
   {
     time: '7:30 AM Onwards',
-    title: 'The Sacred Muhurtham',
+    title: 'The Muhurtham',
     venue: 'Arulmigu Subramanyaswamy Thirukovil, Thiruthani Hill, Thiruttani, Tamil Nadu 631209',
-    description: 'Join us for the traditional South Indian wedding ceremony on the sacred hills of Thiruttani. Witness our vows as we tie the holy Mangalsutra (Thali) amidst Vedic chanting and Nadaswaram tunes.',
+    description: 'Join us for the traditional South Indian wedding ceremony on the hills of Thiruttani. Witness our vows as we tie the holy Mangalsutra (Thali) amidst Vedic chanting and Nadaswaram tunes.',
     icon: 'Temple'
   },
   {

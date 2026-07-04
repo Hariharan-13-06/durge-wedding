@@ -67,14 +67,13 @@ export default function CountdownTimer() {
         >
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-accent/20 bg-brand-sand/30 text-brand-accent text-xs font-semibold tracking-widest uppercase mb-4">
             <Sparkles className="w-3.5 h-3.5 animate-pulse text-brand-accent" />
-            The Countdown
           </div>
           
           <h2 className="text-3xl md:text-4xl font-serif text-brand-text mb-4 font-normal tracking-wide">
-            The Sacred Countdown
+            The Countdown
           </h2>
           <p className="text-sm md:text-base text-brand-accent max-w-lg mb-12 font-serif italic">
-            "Mangalyam Thanthunanena Mama Jeevana Hethuna: With this sacred thread, we bind our lives together in joy, devotion, and eternal harmony."
+            "Mangalyam Thanthunanena Mama Jeevana Hethuna: With this thread, we bind our lives together in joy, devotion, and eternal harmony."
           </p>
         </motion.div>
 

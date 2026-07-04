@@ -58,23 +58,6 @@ export default function EngagementGallery() {
           </motion.div>
         </div>
 
-        {/* Categories Tab Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.value}
-              onClick={() => setFilter(cat.value)}
-              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-widest uppercase transition-all duration-300 relative overflow-hidden border ${
-                filter === cat.value
-                  ? 'bg-brand-text border-brand-text text-brand-bg shadow-md shadow-brand-text/10'
-                  : 'bg-white/60 hover:bg-white border-brand-sand/30 text-brand-text hover:border-brand-accent/40'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
         {/* Gallery Grid */}
         <motion.div 
           layout
