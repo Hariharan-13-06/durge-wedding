@@ -9,8 +9,8 @@ export interface TimelineEvent {
 export interface GalleryImage {
   id: string;
   url: string;
-  caption: string;
-  category: 'engagement' | 'candid' | 'travel';
+  caption?: string;
+  category?: 'engagement' | 'candid' | 'travel';
 }
 
 export interface RSVPData {

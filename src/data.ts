@@ -31,22 +31,28 @@ export const WEDDING_SCHEDULE: ScheduleEvent[] = [
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '1',
-    url: '/src/assets/images/wedding_couple_portrait_1783162470809.jpg',
-    caption: 'Sureth Kumar & Durga Devi in traditional wedding attire',
-    category: 'engagement'
+    url: '/src/assets/images/durga-sureth-2.JPG'
   },
   {
     id: '2',
-    url: '/src/assets/images/engagement_gold_hour_1783162485688.jpg',
-    caption: 'Beautiful shared smiles and warm evening light',
-    category: 'candid'
+    url: '/src/assets/images/durga-sureth-3.jpg'
   },
   {
     id: '3',
-    url: '/src/assets/images/engagement_beach_sunset_1783162499498.jpg',
-    caption: 'Strolling hand-in-hand along the quiet shores',
-    category: 'travel'
-  }
+    url: '/src/assets/images/durga-sureth-4.JPG'
+  }, 
+  {
+    id: '4',
+    url: '/src/assets/images/durga-sureth-5.JPG'
+  },
+  {
+    id: '5',
+    url: '/src/assets/images/durga-sureth-7.JPG'
+  },
+  {
+    id: '6',
+    url: '/src/assets/images/durga-sureth-6.JPG'
+  },
 ];
 
 export const INITIAL_BLESSINGS: GuestBlessing[] = [];

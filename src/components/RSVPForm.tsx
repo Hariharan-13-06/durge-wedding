@@ -104,7 +104,7 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Liam Sterling"
+                    placeholder="e.g. Hariharan K"
                     className={`w-full px-4 py-3 rounded-xl border bg-white/85 text-brand-text text-sm focus:bg-white focus:outline-none transition-all duration-300 ${
                       errors.name ? 'border-red-500 ring-1 ring-red-500' : 'border-brand-sand/50 focus:border-brand-accent'
                     }`}
@@ -122,7 +122,7 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="e.g. liam@example.com"
+                    placeholder="e.g. hariharan@gmail.com"
                     className={`w-full px-4 py-3 rounded-xl border bg-white/85 text-brand-text text-sm focus:bg-white focus:outline-none transition-all duration-300 ${
                       errors.email ? 'border-red-500 ring-1 ring-red-500' : 'border-brand-sand/50 focus:border-brand-accent'
                     }`}

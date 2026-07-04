@@ -119,7 +119,7 @@ export default function ParallaxHero() {
           </motion.div>
 
           {/* Fancy Script & Serif Title */}
-          <div className="flex flex-col items-center md:items-start gap-1 md:gap-3">
+          <div className="flex flex-col gap-1 md:gap-3">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-brand-text font-normal tracking-wide leading-tight">
               {COUPLE_NAMES.groom}
             </h1>
@@ -130,7 +130,8 @@ export default function ParallaxHero() {
               transition={{ type: "spring", stiffness: 100, damping: 15, delay: 1 }}
               className="my-1 text-brand-accent flex items-center justify-center md:ml-4"
             >
-              <Heart className="w-5 h-5 md:w-6 md:h-6 fill-brand-accent/20" strokeWidth={1.5} />
+              {/* <Heart className="w-14 h-14 md:w-6 md:h-6 fill-brand-accent/20" strokeWidth={1.5} /> */}
+              <Heart className="w-14 h-14 md:w-6 md:h-6 fill-brand-accent/20 drop-shadow-md" strokeWidth={1.5} />
             </motion.div>
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-brand-text font-normal tracking-wide leading-tight">
@@ -145,7 +146,7 @@ export default function ParallaxHero() {
             className="mt-6 md:mt-8 flex flex-col items-center md:items-start gap-2"
           >
             <p className="text-sm md:text-base font-serif italic text-brand-accent tracking-wider font-semibold">
-              Are Tying the Sacred Thali
+              Grand Wedding Celebration
             </p>
             <div className="h-[1.5px] w-24 bg-brand-accent/40 my-1 md:my-2" />
             <p className="text-xs sm:text-sm tracking-[0.2em] font-bold text-brand-text uppercase">

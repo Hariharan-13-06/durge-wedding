@@ -30,8 +30,6 @@ export default function App() {
   const [isMuted, setIsMuted] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [totalRSVPs, setTotalRSVPs] = useState(0);
-  const [showNotification, setShowNotification] = useState(false);
-  const [notificationMsg, setNotificationMsg] = useState("");
 
   // Setup global page-level parallax scroll trackers
   const { scrollYProgress } = useScroll();
@@ -66,21 +64,13 @@ export default function App() {
       return item.attending === "yes" ? acc + (item.guestsCount || 1) : acc;
     }, 0);
     setTotalRSVPs(totalAttending);
-
-    setNotificationMsg(
-      rsvp.attending === "yes"
-        ? `Yay! You're added to the celebration guestlist!`
-        : `Thank you for letting us know! We'll miss you.`,
-    );
-    setShowNotification(true);
-    setTimeout(() => setShowNotification(false), 5000);
   };
 
   const navLinks = [
     { href: "#countdown-section", label: "Details" },
     { href: "#gallery-section", label: "Gallery" },
     { href: "#schedule-section", label: "Schedule" },
-    { href: "#rsvp-section", label: "RSVP" },
+    { href: "#rsvp-section", label: "Blessings" },
   ];
 
   const scrollToSection = (id: string) => {
@@ -295,7 +285,7 @@ export default function App() {
 
           <div className="pt-6">
             <h4 className="font-serif text-lg tracking-wider text-brand-sand">
-              {COUPLE_NAMES.groomFull} & {COUPLE_NAMES.brideFull}
+              {COUPLE_NAMES.groom} & {COUPLE_NAMES.bride}
             </h4>
             <p className="text-xs tracking-[0.25em] font-medium text-brand-accent uppercase mt-2">
               August 23, 2026 • Thiruttani • Chennai
@@ -323,23 +313,6 @@ export default function App() {
           >
             <ArrowUp className="w-5 h-5" />
           </motion.button>
-        )}
-      </AnimatePresence>
-
-      {/* 13. GLOBAL SUCCESS / INTERACTIVE TOAST NOTIFICATION */}
-      <AnimatePresence>
-        {showNotification && (
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 50, scale: 0.95 }}
-            className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-2xl bg-brand-text text-brand-bg border border-brand-sand/30 shadow-2xl flex items-center gap-3"
-          >
-            <Sparkles className="w-5 h-5 text-brand-accent animate-pulse flex-shrink-0" />
-            <span className="font-serif italic text-sm md:text-base whitespace-nowrap">
-              {notificationMsg}
-            </span>
-          </motion.div>
         )}
       </AnimatePresence>
     </div>

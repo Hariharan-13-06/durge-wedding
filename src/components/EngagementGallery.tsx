@@ -74,13 +74,13 @@ export default function EngagementGallery() {
                 transition={{ duration: 0.5, type: 'spring', stiffness: 100, damping: 18 }}
                 whileHover={{ y: -6 }}
                 onClick={() => setActiveIndex(idx)}
-                className="group relative h-[320px] rounded-2xl overflow-hidden shadow-[0_10px_25px_-5px_rgba(139,126,102,0.08)] border border-brand-sand/20 cursor-pointer bg-brand-sand/10"
+                className="group relative h-[200px] overflow-hidden shadow-[0_10px_25px_-5px_rgba(139,126,102,0.08)] border border-brand-sand/20 cursor-pointer bg-brand-sand/10"
               >
                 {/* Photo Image */}
                 <img
                   src={img.url}
                   alt={img.caption}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="w-full h-full object-contain transition-transform duration-700 ease-out border-[3px] border-brand-sand/20 border-sand group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
 
