@@ -1,0 +1,6 @@
+{
+  "name": "Wedding Invitation & Parallax Showcase",
+  "description": "An elegant wedding invitation featuring advanced scroll-driven parallax effects, live countdown timer, interactive engagement gallery, story timeline, and guest RSVP with blessing wall.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
