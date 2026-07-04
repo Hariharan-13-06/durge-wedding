@@ -31,27 +31,27 @@ export const WEDDING_SCHEDULE: ScheduleEvent[] = [
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '1',
-    url: '/src/assets/images/durga-sureth-2.JPG'
+    url: '/images/durga-sureth-2.JPG'
   },
   {
     id: '2',
-    url: '/src/assets/images/durga-sureth-3.jpg'
+    url: '/images/durga-sureth-3.jpg'
   },
   {
     id: '3',
-    url: '/src/assets/images/durga-sureth-4.JPG'
+    url: '/images/durga-sureth-4.JPG'
   }, 
   {
     id: '4',
-    url: '/src/assets/images/durga-sureth-5.JPG'
+    url: '/images/durga-sureth-5.JPG'
   },
   {
     id: '5',
-    url: '/src/assets/images/durga-sureth-7.JPG'
+    url: '/images/durga-sureth-7.JPG'
   },
   {
     id: '6',
-    url: '/src/assets/images/durga-sureth-6.JPG'
+    url: '/images/durga-sureth-6.JPG'
   },
 ];
 
