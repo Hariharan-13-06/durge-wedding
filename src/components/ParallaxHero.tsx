@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { COUPLE_NAMES } from '../data';
 import { Heart, ChevronDown } from 'lucide-react';
+import WeddingBackground from '../assets/images/wedding-background.png';
+import WeddingCouplePortrait from '../assets/images/durga-sureth-temple.jpg';
 
 export default function ParallaxHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,7 +59,7 @@ export default function ParallaxHero() {
         className="absolute inset-0 w-full h-full z-0 flex items-center justify-center overflow-hidden"
       >
         <img 
-          src="/src/assets/images/wedding-background.png" 
+          src={WeddingBackground}    
           alt="Watercolor Sky Background" 
           className="w-full h-full object-cover origin-bottom opacity-35 select-none"
           referrerPolicy="no-referrer"
@@ -165,7 +167,7 @@ export default function ParallaxHero() {
         >
           <div className="relative w-[50vw] sm:w-[42vw] md:w-[32vw] lg:w-[25vw] aspect-[3/4] bg-brand-sand rounded-t-full border-[3px] md:border-[10px] border-white shadow-2xl overflow-hidden flex items-center justify-center">
             <img 
-              src="/src/assets/images/durga-sureth-temple.jpg" 
+              src={WeddingCouplePortrait} 
               alt="Wedding Couple Portrait" 
               className="w-full h-full object-cover origin-bottom select-none opacity-90"
               referrerPolicy="no-referrer"
