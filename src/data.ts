@@ -31,7 +31,7 @@ export const WEDDING_SCHEDULE: ScheduleEvent[] = [
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '1',
-    url: '/images/durga-sureth-2.JPG'
+    url: '/images/durga-sureth-2.jpg'
   },
   {
     id: '2',
@@ -39,19 +39,19 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: '3',
-    url: '/images/durga-sureth-4.JPG'
+    url: '/images/durga-sureth-4.jpg'
   }, 
   {
     id: '4',
-    url: '/images/durga-sureth-5.JPG'
+    url: '/images/durga-sureth-5.jpg'
   },
   {
     id: '5',
-    url: '/images/durga-sureth-7.JPG'
+    url: '/images/durga-sureth-7.jpg'
   },
   {
     id: '6',
-    url: '/images/durga-sureth-6.JPG'
+    url: '/images/durga-sureth-6.jpg'
   },
 ];
 
