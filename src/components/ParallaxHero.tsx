@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { COUPLE_NAMES } from '../data';
 import { Heart, ChevronDown } from 'lucide-react';
 import WeddingBackground from '../assets/images/wedding-background.png';
-import WeddingCouplePortrait from '../assets/images/durga-sureth-temple.jpg';
+import WeddingCouplePortrait from '../assets/images/durga-sureth.jpg';
 
 export default function ParallaxHero() {
   const containerRef = useRef<HTMLDivElement>(null);

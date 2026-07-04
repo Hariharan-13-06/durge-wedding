@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 // Swaying animation helper for hanging bells and lamps
 const swayTransition = {
-  duration: 4.5,
+  duration: 2,
   ease: "easeInOut",
   repeat: Infinity,
   repeatType: "reverse" as const
@@ -142,7 +142,7 @@ export function TempleToran() {
       {/* Decorative repeating chain of mango leaves (Maavilai) and marigold strings (Genda Phool) */}
       <div className="w-full h-full flex justify-around items-start opacity-90 max-w-[1200px] mx-auto">
         {[...Array(16)].map((_, i) => {
-          const delay = i * 0.15;
+          const delay = i * 0.3;
           return (
             <div key={i} className="flex flex-col items-center relative -top-1">
               {/* Curved thread */}
@@ -155,7 +155,7 @@ export function TempleToran() {
                 {/* Gold/Orange Marigold flower */}
                 <motion.div 
                   animate={{ y: [0, 2, 0] }}
-                  transition={{ duration: 3, delay, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 2, delay, repeat: Infinity, ease: "easeInOut" }}
                   className="w-4 h-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 border border-amber-300 shadow-sm flex items-center justify-center"
                 >
                   {/* Outer petal layers */}
@@ -168,8 +168,8 @@ export function TempleToran() {
                   height="26" 
                   viewBox="0 0 12 26" 
                   fill="none"
-                  animate={{ rotate: [1, -3, 1] }}
-                  transition={{ duration: 4, delay, repeat: Infinity, ease: "easeInOut" }}
+                  animate={{ rotate: [-4, 3, -4] }}
+                  transition={{ duration: 1, delay, repeat: Infinity, ease: "easeInOut" }}
                   style={{ transformOrigin: "top center" }}
                   className="text-emerald-700 mt-0.5 drop-shadow-sm"
                 >
@@ -321,9 +321,9 @@ export function TempleFlowerGarlands() {
           <motion.div
             key={index}
             style={{ left: strand.left, transformOrigin: 'top center' }}
-            animate={{ rotate: [1.5, -1.5, 1.5] }}
+            animate={{ rotate: [-4, 3, -4] }}
             transition={{
-              duration: 3.5 + (index % 3) * 0.5,
+              duration: 1.5 + (index % 3) * 0.5,
               delay: strand.delay,
               ease: "easeInOut",
               repeat: Infinity,
