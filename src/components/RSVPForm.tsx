@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { RSVPData } from '../types';
-import { CheckCircle, Mail, Users, MessageSquare, Coffee, Send, Heart } from 'lucide-react';
+import { CheckCircle, Mail, Users, MessageSquare, Coffee, Send, Heart, Loader2, AlertCircle } from 'lucide-react';
 import { TempleWatermark } from './TempleDecoration';
 
 interface RSVPFormProps {
@@ -19,6 +19,8 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
@@ -33,21 +35,43 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+
+    setSubmitError('');
+    setIsSending(true);
 
     const rsvp: RSVPData = {
       ...formData,
       timestamp: new Date().toISOString()
     };
 
-    // Save to local storage for persistence across reloads
-    const existingRsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-    localStorage.setItem('wedding_rsvps', JSON.stringify([...existingRsvps, rsvp]));
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
-    onRSVPSubmit(rsvp);
-    setIsSubmitted(true);
+      if (!res.ok) {
+        const { error } = await res.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(typeof error === 'string' ? error : 'Failed to send. Please try again.');
+      }
+
+      // Save to local storage for persistence across reloads
+      const existingRsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+      localStorage.setItem('wedding_rsvps', JSON.stringify([...existingRsvps, rsvp]));
+
+      onRSVPSubmit(rsvp);
+      setIsSubmitted(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : 'Something went wrong sending your blessing. Please try again.'
+      );
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -55,11 +79,8 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
       {/* Traditional Temple Watermark Background */}
       <TempleWatermark />
 
-      {/* Subtle border accent */}
-      {/* <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-brand-accent/20 to-transparent" /> */}
-
       <div className="max-w-3xl mx-auto relative z-10">
-        
+
         {/* Section Title */}
         <div className="text-center mb-16">
           <motion.div
@@ -105,7 +126,8 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Hariharan K"
-                    className={`w-full px-4 py-3 rounded-xl border bg-white/85 text-brand-text text-sm focus:bg-white focus:outline-none transition-all duration-300 ${
+                    disabled={isSending}
+                    className={`w-full px-4 py-3 rounded-xl border bg-white/85 text-brand-text text-sm focus:bg-white focus:outline-none transition-all duration-300 disabled:opacity-60 ${
                       errors.name ? 'border-red-500 ring-1 ring-red-500' : 'border-brand-sand/50 focus:border-brand-accent'
                     }`}
                   />
@@ -123,7 +145,8 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="e.g. hariharan@gmail.com"
-                    className={`w-full px-4 py-3 rounded-xl border bg-white/85 text-brand-text text-sm focus:bg-white focus:outline-none transition-all duration-300 ${
+                    disabled={isSending}
+                    className={`w-full px-4 py-3 rounded-xl border bg-white/85 text-brand-text text-sm focus:bg-white focus:outline-none transition-all duration-300 disabled:opacity-60 ${
                       errors.email ? 'border-red-500 ring-1 ring-red-500' : 'border-brand-sand/50 focus:border-brand-accent'
                     }`}
                   />
@@ -141,17 +164,36 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Leave a sweet word of congratulations..."
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-brand-sand/50 bg-white/85 text-brand-text text-sm focus:bg-white focus:border-brand-accent focus:outline-none transition-all duration-300 resize-none"
+                    disabled={isSending}
+                    className="w-full px-4 py-3 rounded-xl border border-brand-sand/50 bg-white/85 text-brand-text text-sm focus:bg-white focus:border-brand-accent focus:outline-none transition-all duration-300 resize-none disabled:opacity-60"
                   />
                 </div>
+
+                {/* Submit error */}
+                {submitError && (
+                  <div className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl bg-brand-text hover:bg-brand-text/95 text-brand-bg font-semibold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-brand-text/10"
+                  disabled={isSending}
+                  className="w-full py-4 rounded-xl bg-brand-text hover:bg-brand-text/95 text-brand-bg font-semibold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-brand-text/10 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4" />
-                  Send Blessings
+                  {isSending ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Send Blessings
+                    </>
+                  )}
                 </button>
               </motion.form>
             ) : (
@@ -165,7 +207,7 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                 <div className="w-16 h-16 rounded-full bg-brand-sand/30 text-brand-accent flex items-center justify-center mx-auto border border-brand-accent/20">
                   <CheckCircle className="w-8 h-8" />
                 </div>
-                
+
                 <div className="space-y-2">
                   <h3 className="text-2xl font-serif text-brand-text">Thank You, {formData.name}!</h3>
                   <p className="text-brand-accent/90 font-serif italic text-sm md:text-base">
@@ -179,6 +221,7 @@ export default function RSVPForm({ onRSVPSubmit }: RSVPFormProps) {
                   <button
                     onClick={() => {
                       setIsSubmitted(false);
+                      setSubmitError('');
                       setFormData({
                         name: '',
                         email: '',
