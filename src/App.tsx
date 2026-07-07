@@ -24,10 +24,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import { RSVPData } from "./types";
+import { useBackgroundMusic } from "./hooks/useBackgroundMusic";
 
 export default function App() {
+
+  const { isMuted, toggleMute } = useBackgroundMusic("/audio/wedding-bgm.mp3");
+
   const [scrollY, setScrollY] = useState(0);
-  const [isMuted, setIsMuted] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [totalRSVPs, setTotalRSVPs] = useState(0);
 
@@ -152,11 +155,8 @@ export default function App() {
               <div className="flex items-center gap-3">
                 {/* Ambient Music player simulator */}
                 <button
-                  onClick={() => setIsMuted(!isMuted)}
+                  onClick={() => toggleMute()}
                   className="p-2.5 rounded-full border border-brand-sand/40 hover:border-brand-accent/30 text-brand-text hover:text-brand-accent bg-white/50 hover:bg-white transition-all cursor-pointer relative group"
-                  title={
-                    isMuted ? "Unmute Ambient Music" : "Mute Ambient Music"
-                  }
                 >
                   {isMuted ? (
                     <VolumeX className="w-4 h-4 text-brand-text/60" />
@@ -233,14 +233,11 @@ export default function App() {
           </div>
           <div>
             <p className="text-[10px] font-bold text-brand-accent uppercase tracking-widest">
-              Playing Ambient
-            </p>
-            <p className="text-xs text-brand-text/80 font-serif italic">
-              "Autumn Leaves Piano Theme"
+              Playing...
             </p>
           </div>
           <button
-            onClick={() => setIsMuted(true)}
+            onClick={() => toggleMute()}
             className="text-brand-text/40 hover:text-brand-text ml-2"
           >
             <X className="w-3.5 h-3.5" />
